@@ -56,7 +56,7 @@ function Contents(props)
     return(
      <div>
       
-    <MoviesRow movies={NetflixOriginals} title="Netflix Originals" isNetflix={true} idSection='netflix'/>
+    <MoviesRow movies={NetflixOriginals} title="Mova Originals" isNetflix={true} idSection='netflix'/>
     <MoviesRow movies={TrendingMovies} title="Trending Movies" idSection='trending'/>
     <MoviesRow movies={TopRatedMovies} title="Top Rated Movies"idSection='topRated'/>
     <MoviesRow movies={ActionMovies} title="Action Movies"idSection='action'/>

@@ -1,5 +1,5 @@
-import {  FaHotjar, FaStar } from "react-icons/fa";
-import {SiNetflix} from 'react-icons/si'
+import {  FaHotjar, FaStar,FaGoogleWallet } from "react-icons/fa";
+
 import { MdTheaterComedy } from "react-icons/md";
 import {
   GiNinjaHeroicStance,
@@ -16,7 +16,7 @@ function Menus(props)
 {
     return(
     <MenusPane>
-   <MenuItem name="Netflix" Icon={SiNetflix} to='netflix'/>
+   <MenuItem name="Mova" Icon={FaGoogleWallet} to='netflix'/>
    <MenuItem name="Trending" Icon={FaHotjar} to='trending'/>
    <MenuItem name="Top rated" Icon={FaStar} to='topRated'/>
    <MenuItem name="Actions Movies" Icon={GiNinjaHeroicStance} to='action'/>

@@ -7,7 +7,7 @@ import Table from 'react-bootstrap/Table';
 import {MdDeleteForever} from "react-icons/md"
 import {CgTrashEmpty} from "react-icons/cg"
 import{CiDiscount1} from "react-icons/ci"
-import{BsFillCartCheckFill} from"react-icons/bs"
+
 
 
 // const movieList=[
@@ -82,7 +82,7 @@ function CollectionMovie(props)
         <div className="movieCollection">Movie</div>
         <div className="movieCollectionName">Movie Name</div>
         <div className="movieCollectionPrice">Movie Price</div>
-        <div className="movieCollectionDelete">Movie Delete</div>
+        <div className="movieCollectionDelete">Operation</div>
     </div>) :(<div></div>)
 }
  
@@ -98,8 +98,8 @@ function CollectionMovie(props)
         <div className="rowMovieCollection" key={index}>
           <div className="imgCollection"><img src={imageUrl}  alt=""></img></div>
           <div className="nameCollection"><h4>{movie &&(movie.title||movie.name)}</h4></div>
-          <div className="priceCollection">1.2$</div>
-          <div className="btnDelete" onClick={()=>handlebtncollection(key=index)}> <MdDeleteForever/> Delete</div>
+          <div className="priceCollection">1.20$</div>
+          <div className="btnDelete" onClick={()=>handlebtncollection(key=index)}> <MdDeleteForever/>   </div>
 
         </div>
         
@@ -145,9 +145,9 @@ function CollectionMovie(props)
                 <div className="codeVoucherPrice">Nhập mã voucher</div>
             </div>
             <div className="MoviePrice">
-              <div className="titleMoviePrice">Tổng thanh toán :</div>
+              <div className="titleMoviePrice">Oder total :</div>
               <div className="salePrice">{(1.2*movie.length).toFixed(2)}$</div>
-              <div className="btnPrice"><BsFillCartCheckFill className="iconBtnPrice"/> Thanh Toán</div>
+              <div className="btnPrice"> Proceed to checkout</div>
             </div>
     </div>):(<div></div>)
 }
@@ -235,7 +235,7 @@ justify-content: center;
         }
         .salePrice{
             margin: 0px 2px 0px 2px;
-            color:#ee4d2d;
+            color:#E3111F;
             font-size:22px;
             flex:1;
             @media screen and (max-width:600px)
@@ -250,7 +250,7 @@ justify-content: center;
         .btnPrice{
             align-items:center;
             display:flex;
-            background-color:#f05d40;
+            background-color:#E3111F;
             border-radius:2px;
             box-shadow:#000000 0px 1px 1px 0px;
             color:#ffffff;
@@ -329,20 +329,21 @@ justify-content: center;
         .movieCollectionName
         {
             width:40%;
-            color:#888888;
+            color:ffE3111F;
             font-size:14px;
             line-height: 16.8px;
         }
         .movieCollectionPrice
         {
             width:25%;
-            color:#888888;ne-height: 16.8px;
+            color:ffE3111F;
+            line-height: 16.8px;
             font-size:14px;
             line-height: 16.8px;
         }
         .movieCollectionDelete
         {
-            color:#888888;
+            color:ffE3111F;
             font-size:14px;
             line-height: 16.8px;
         }
@@ -388,12 +389,6 @@ justify-content: center;
         font-size:18px;
         justify-content:center;
         align-items:center;
-        border-width:1px;
-        border-radius:24px;
-        border-color:#000000;
-
-        border-style: solid;
-        padding: 10px 24px 10px 16px;
         
         &:hover{
            

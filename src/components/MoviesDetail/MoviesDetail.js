@@ -4,28 +4,48 @@ import styled, { keyframes } from "styled-components";
 import { setMovieCard, setMovieDetail } from "../store/action";
 import moment from "moment/moment";
 import {BsFillCartCheckFill} from'react-icons/bs'
+import {MdOutlineDoneOutline} from'react-icons/md'
+import { useNavigate } from 'react-router-dom';
 
 
 //const showModal= true;
 function MoviesDetail(props)
 {
         
-    
+    const navigate= useNavigate();
+    const goCart=()=>
+{
+    navigate('/cart');
+}
     const{movie,showModal}=props;
     const dispatch = useDispatch();
+    
+    const toggleNotify = document.getElementById("toggleNotify");
     const handleCloseModal =()=>
     {
         dispatch(setMovieDetail(null))
     }
     const handleMovieCart =()=>{
           dispatch(setMovieCard(movie))
-          
+          toggleNotify.classList.remove("hidesuccess");
+          toggleNotify.classList.add("showsuccess");
+          setTimeout(() => {
+            toggleNotify.classList.remove("showsuccess");
+            toggleNotify.classList.add("hidesuccess");
+            
+          }, 2000);
+         
     }
     return(
         <MoviesDetailModal>
          <div onClick={handleCloseModal}
           className={`backdrop ${showModal ?'showBackdrop' :'hideBackdrop'} `}>
+         <div className="notify-success" id="toggleNotify">
+            <MdOutlineDoneOutline/>
+            <div className="title-success ">Add Success</div>
          </div>
+         </div>
+         
          <div className={`modal ${showModal ?'showModal' :'hideModal'}`}
          style={
             movie ?{
@@ -45,12 +65,20 @@ function MoviesDetail(props)
                 moment(movie.first_air_date).format('DD/MM/YYYY'))}</p>
                 <p className="runtime">Runtime:</p>
                 <p className="overview">{movie && movie.overview} </p>
-                <h2 className="priceMovieDetail">Price:1.20$</h2>
+                <h2 className="priceMovieDetail">1.20$</h2>
+                <div className="btn-movie">
                 <div className="btnMovieDetail" onClick={()=>handleMovieCart(movie)}>
                     
                   <BsFillCartCheckFill className="iconMovieDetail"/>
-                  <div className="titleMovieDetail">Add Cart</div>
+                  <div className="titleMovieDetail">Add to cart</div>
                   
+                </div>
+                <div className="btnbuynow" onClick={goCart}>
+                    
+                  
+                  <div className="titleMovieDetail">Buy now</div>
+                  
+                </div>
                 </div>
             </div>
            </div>
@@ -94,6 +122,26 @@ const MoviesDetailModal =styled.div`
     z-index:200;
     background-color:rgba(0,0,0,0.6);
     animation: ${fadeIn} 1s cubic-bezier(0.17,0.85,0.45,1) forwards;
+    
+    .notify-success{
+        color:white;
+        display:none;
+        width:200px;
+        height:50px;
+        background-color:green;
+        align-items:center;
+        justify-content:center;
+        right:0px;
+        position:absolute;
+        top:12px;
+        transition:all 0.3s ease;
+    }
+    .showsuccess{
+        display:flex;
+    }
+    .hidesuccess{
+        display:none;
+    }
 }
 .showBackdrop{
     display:block;
@@ -205,20 +253,47 @@ const MoviesDetailModal =styled.div`
                 font-size:14px;
             }
         }
-        .btnMovieDetail{
+        .btn-movie{
             display:flex;
-            background-color:var(--color-white);
-            color:var(--color-dark);
-            padding : 10px;
-            width:140px;
-            cursor:pointer;
-            border-radius:4px;
+            margin-top:10px;
+            margin-bottom:20px;
+            .btnbuynow{
+                align-items:center;
+                background-color:#E3111F;
+                border-radius:20px;
+                box-shadow:#000000 0px 1px 1px 0px;
+                color:#ffffff;
+                display:flex;
+                flex-direction:column;
+                
+                justify-content:center;
+                line-height:19.2px;
+                margin:0px 15px 0px 0px;
+                padding:10px 20px;
+                text-align:center;
+                text-transform:capitalize;
+                cursor:pointer;
+            }
+        .btnMovieDetail{
+            align-items:center;
+            background-color:#f3f5f6;
+            border-radius:20px;
+            box-shadow:#000000 0px 1px 1px 0px;
+            color:#E3111F;
+            display:flex;
+            
+            
+            line-height:19.2px;
+            margin:0px 10px 0px 0px;
+            padding:10px 20px;
+            text-align:center;
+            text-transform:capitalize;
             align-items:center;
             justify-content:center;
             white-space: nowrap;
             position:relative;
-            margin-top:10px;
-
+            
+            cursor:pointer;
             &:hover
             {
                 opacity:0.7;
@@ -231,6 +306,7 @@ const MoviesDetailModal =styled.div`
                 font-size:20px;
                 font-weight:500;
                 padding-left:5px;
+                
             }
             @media screen and (max-width:980px)
         {
@@ -250,10 +326,14 @@ const MoviesDetailModal =styled.div`
             }
         }
         }
+    }
         .priceMovieDetail{
-            color:var(--color-white);
-            font-size:22px;
+            color:#E3111F;
+            font-size:30px;
+            font-weight:500;
+            line-height:36px;
             white-space: nowrap;
+            margin-top:8px;
         }
         }
     }

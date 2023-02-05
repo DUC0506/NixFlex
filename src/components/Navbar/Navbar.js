@@ -1,6 +1,9 @@
 
-import logo from'../../assets/images/logo (1).png';
+import mova from'../../assets/images/mova.png';
 import {MdSearch,MdOutlineCollections} from 'react-icons/md';
+
+
+
 import styled from 'styled-components';
 import { useScrollY } from '../hooks';
 import { useState } from 'react';
@@ -46,8 +49,15 @@ const handleProduct=()=>
         <div className='navContainer'>
            
             <div className='logo' onClick={goHome}>
-                <img src={logo} alt=""></img>
+                <img src={mova} alt=""></img>
             </div>
+            <div className='middle'>
+                <div className='middle-home' onClick={goHome}>Home</div>
+                <div className='middle-home'>Explore</div>
+                <div className='middle-home' onClick={handleProduct}>My List</div>
+                
+            </div>
+            
             <div className='navSearch'>
             <MdSearch className='iconSearch'></MdSearch>
             <input
@@ -55,18 +65,20 @@ const handleProduct=()=>
             value={keywords}
             type="text" placeholder='Input title, genres, people'/>
             </div>
+            <div className='iconCart-vs1' onClick={handlename}><AiOutlineShoppingCart /></div>
             {/* <div className='namerandom' onClick={handlename}>Bam vao day</div>
             <div className='myProduct' onClick={handleProduct}>My Product</div> */}
-            <div className='middle'></div>
+            
             <div className='profileUser'>
+                
                 <div className='imgProfile'>
-                    <img src='https://img.freepik.com/free-icon/pikachu_318-196537.jpg' alt=''/>
+                    <img src='https://assets.glxplay.io/static/avatars/Avatar%20Profile-06.png' alt=''/>
                     <div><AiOutlineCaretDown className='iconProfile'/> </div>
                  </div>
                 <ul className='itemProfile'>
-                    <li className='itemProfileUser'> <AiOutlineUser className='iconUser'/>Tài khoản </li>
-                    <li><div className='btnCart' onClick={handlename} ><AiOutlineShoppingCart className='iconCart'/>   Giỏ hàng</div></li>
-                    <li><div className='btnCollection' onClick={handleProduct}><MdOutlineCollections className='iconCollection'/> Bộ sưu tập</div></li>
+                    <li className='itemProfileUser'> <AiOutlineUser className='iconUser'/>Profile </li>
+                    <li><div className='btnCart' onClick={handlename} ><AiOutlineShoppingCart className='iconCart'/>My Cart</div></li>
+                    <li><div className='btnCollection' onClick={handleProduct}><MdOutlineCollections className='iconCollection'/> My List</div></li>
                 </ul>
             </div>
            
@@ -87,35 +99,81 @@ transition-timing-function: ease-in;
 transition: all 1s;
 z-index:10;
 
-@media only screen and(max-width:600px)
+@media screen and (max-width:600px)
     {
        
-        height:100px;
+        height:40px;
     }
 
 .navContainer
 {
     background-color:transparent;
     display: flex;
+    justify-content:space-around;
     align-items: center;
     flex-direction:row;
-    justify-content: flex-start;
-    height:100%
-    
-    @media only screen and(max-width:600px)
+    position:relative;
+    height:100%;
+    .iconCart-vs1{
+        position:absolute;
+        display:flex;
+        align-items:center;
+        margin-right:2%;
+        font-size:22px;
+        margin-top:10px;
+        right:6%;
+        
+        cursor: pointer;
+        
+        color:#bbb;
+        
+    }
+    @media screen and (max-width:600px)
     {
         flex-direction:column;
         
     }
     .middle{
         flex:1;
+        font-size:18px;
+        display:flex;
+        position:relative;
+        margin:16px 0px 12px 50px;
+        align-items: center;
+        color:var(--color-white);
+        @media screen and (max-width:1024px)
+        {
+          display:none;
+        }
+        .middle-home{
+            display:flex;
+            
+            justify-content:center;
+            text-transform:capitalize;
+            align-items: center;
+            color:var(--color-white);
+            margin:0px 14px;
+            cursor:pointer;
+            &:hover .icon-home {
+                opacity:0.7;
+            }
+            &:hover {
+                opacity:0.7;
+            }
+            .icon-home{
+               color:var(--color-white);
+               margin-right:2px;
+               
+            }
+        }
         
     }
     .profileUser{
-        position:relative;
+        position:absolute;
+        right:2%;
         color:var(--color-white);
-        margin-top:20px;
-        margin-right:40px;
+        margin-top:8px;
+        margin-right:2%;
 
         &:hover .itemProfile
             {
@@ -125,12 +183,11 @@ z-index:10;
         .imgProfile{
             display:flex;
             align-items:center; 
-            width:40px;
-            height:40px;
+            width:32px;
+            height:32px;
             border-radius:50%;
             border:1px;
-            border-style:solid;
-            border-color:white;
+            
             cursor:pointer;
             
             
@@ -138,7 +195,7 @@ z-index:10;
             img{
                 width:100%;
                 height:100%;
-                
+                border-radius:50%;
             }
             .iconProfile{
                 
@@ -268,8 +325,12 @@ z-index:10;
     {
          color: var(--color-white);
          padding-right:20px;
+         position: absolute;
+         right:10%;
+        
          display:flex;
          justify-content:flex-end;
+        
         padding-top:10px;
          &:hover .iconSearch
          {

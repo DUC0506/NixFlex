@@ -1,6 +1,10 @@
 import ReactPlayer from "react-player/vimeo";
 import{VscMute, VscUnmute} from "react-icons/vsc"
+import{MdPlaylistAdd} from "react-icons/md"
+import {BsFillCartCheckFill} from'react-icons/bs'
+import{AiOutlineHeart} from "react-icons/ai"
 import styled from "styled-components";
+import goblin from'../../assets/images/goblin.webp';
 import{useState} from"react";
 
 
@@ -19,8 +23,13 @@ function Intro(props)
             url='https://vimeo.com/185341559'
             ></ReactPlayer>
             <div className="infoIntro">
-                <h1 className="headingIntro">Netflix Elite</h1>
-                <p className="overviewIntro">Netflix Elite Launch Campaign Director:Fernanda Weinfeld Production Company:Awake Film Agency:Akqa  </p>
+                <h1 className="headingIntro"><img src={goblin} alt=''/></h1>
+                <p className="overviewIntro">Trên hành trình tìm kiếm người phá vỡ lời nguyền bất tử của mình, Yêu tinh Gong Yoo gặp gỡ Thần chết Lee Dong Wook và một nữ sinh yêu đời với quá khứ đau thương.</p>
+                <div className="btn-infoIntro">
+                    <div className="btn-addtocart"><BsFillCartCheckFill className="Cart-icon"/>Add to cart</div>
+                    <div className="btn-des"><MdPlaylistAdd/></div>
+                    <div className="btn-heart"><AiOutlineHeart/></div>
+                </div>
             </div>
              {
                 isMuted ?(
@@ -55,7 +64,7 @@ padding-top:56%;
 {
     position:absolute;
     top:140px;
-    left:30px;
+    left:48px;
 
     @media screen and (max-width:800px)
     {
@@ -67,24 +76,25 @@ padding-top:56%;
         top:100px;
         left:15px;
     }
-    .headingIntro
+    .headingIntro img
     {
         font-size:60px;
         transition: all 0.3s ease;
-        @media screen and (max-width:800px)
+        width:400px;
+    @media screen and (max-width:800px)
     {
         
-           font-size:40px;
+        width:300px;
     }
     @media screen and (max-width:600px)
     {
         
-        font-size:24px;
+        width:200px;
     }
     }
     .overviewIntro
     {
-        max-width:550px;
+        max-width:480px;
         width:100%;
         line-heigh:1.3;
         padding-top:25px;
@@ -98,11 +108,73 @@ padding-top:56%;
     @media screen and (max-width:600px)
     {
         
-        font-size:14px;
+       display:none
     }
     }
     
 
+}
+.btn-infoIntro{
+    align-items:center;
+    color:#ffffff;
+    display:flex;
+    padding:18px 0px;
+
+    .btn-addtocart{
+    align-items:center;
+    background-color:#f3f5f6;
+    border-radius:50px;
+    color:#1f2325;
+    display:flex;
+    
+    font-weight:700;
+    justify-content:center;
+    line-height:24px;
+    margin:0px 8px 0px 0px;
+    padding:8px 24px 8px 24px;
+    text-align:center;
+    cursor:pointer;
+    .Cart-icon{
+        font-size:20px;
+        margin-right:4px;
+    }
+
+    &:hover{
+        background-color: #DDE2E5;
+    }
+    }
+    .btn-des{
+        align-items:center;
+        background-color: #404446;
+        border-radius:50%;
+        display:flex;
+        cursor:pointer;
+        font-size:18px;
+        justify-content:center;
+        margin:0px 8px 0px 0px;
+        padding:10px 12px;
+        text-align:center;
+
+        &:hover{
+            background-color: #9CA1A3;
+        }
+    }
+    .btn-heart{
+        align-items:center;
+        background-color: #404446;
+        border-radius:50%;
+        display:flex;
+        cursor:pointer;
+        font-size:18px;
+        justify-content:center;
+        margin:0px 8px 0px 0px;
+        padding:10px 12px;
+        text-align:center;
+
+        &:hover{
+            background-color: #9CA1A3;
+        }
+    }
 }
 .btnVolume{
     position: absolute;

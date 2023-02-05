@@ -35,7 +35,7 @@ function Footer(props) {
            <div className="footer-app">
            <h3>Tải ứng dụng</h3>
            <img src={android} alt=""></img>
-           <img src={ios} alt=""> </img>
+           <img src={ios} alt=""></img>
            </div>
 
           </div> 

@@ -1,4 +1,4 @@
-
+import React from "react";
 import mova from'../../assets/images/mova.png';
 import {MdSearch,MdOutlineCollections} from 'react-icons/md';
 

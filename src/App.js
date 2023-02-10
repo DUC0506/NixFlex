@@ -16,6 +16,8 @@ import Footer from './components/Footer';
 import Collection from './components/Pages/Collection';
 import Product from './components/Pages/Product';
 import Watch from './components/Pages/Watch';
+import Checkout from './components/Pages/Checkout';
+import Plan from'./components/Pages/Plan'
 function App() {
  
   //console.log(moviesDetail)
@@ -33,6 +35,8 @@ function App() {
         <Route  path='/cart' element={<Collection/>}/>
         <Route  path='/product' element={<Product/>}/>
         <Route  path='/watch'     element={<Watch/>}/>
+        <Route  path='/checkout'     element={<Checkout/>}/>
+        <Route  path='/plan'     element={<Plan/>}/>
       </Routes> 
       
       <Footer/>

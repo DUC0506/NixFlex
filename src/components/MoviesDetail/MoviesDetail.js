@@ -73,7 +73,7 @@ function MoviesDetail(props)
                   <div className="titleMovieDetail">Add to cart</div>
                   
                 </div>
-                <div className="btnbuynow" onClick={goCart}>
+                <div className="btnbuynow" onClick={()=>{handleMovieCart(movie) ;goCart()}}>
                     
                   
                   <div className="titleMovieDetail">Buy now</div>

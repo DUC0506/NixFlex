@@ -6,7 +6,8 @@ import { DeleteMovieCart } from "../store/action";
 import Table from 'react-bootstrap/Table';
 import {MdDeleteForever} from "react-icons/md"
 import {CgTrashEmpty} from "react-icons/cg"
-import{CiDiscount1} from "react-icons/ci"
+import { useNavigate } from 'react-router-dom';
+// import{CiDiscount1} from "react-icons/ci"
 
 
 
@@ -25,14 +26,24 @@ import{CiDiscount1} from "react-icons/ci"
 //           ];
 function CollectionMovie(props)
 {
+
+    const navigate= useNavigate();
     const dispatch=useDispatch();
     const {movie}=props;  
     var key=0;
+    var sale=0;
     console.log(movie)
 
     const handlebtncollection =()=>{
         dispatch(DeleteMovieCart(key));
         console.log( 'Delete' + key );
+    }
+    // chưa làm xong phần dispacth total 
+    const handlesale =()=>{
+
+    }
+    const handlecheckout =()=>{
+        navigate('/checkout');
     }
     return(
         <CollectionDetail>
@@ -139,15 +150,15 @@ function CollectionMovie(props)
     {
         movie && movie.length > 0 ?(
     <div className="totalPrice">
-            <div className="promotionPrice">
+            {/* <div className="promotionPrice">
                 <div className="voucherPrice"><CiDiscount1 className="iconVoucher"/> Nixflex Voucher</div>
                 <div className="middle"></div>
                 <div className="codeVoucherPrice">Nhập mã voucher</div>
-            </div>
+            </div> */}
             <div className="MoviePrice">
               <div className="titleMoviePrice">Oder total :</div>
-              <div className="salePrice">{(1.2*movie.length).toFixed(2)}$</div>
-              <div className="btnPrice"> Proceed to checkout</div>
+              <div className="salePrice">{(sale=1.2*movie.length).toFixed(2)}$</div>
+              <div className="btnPrice" onClick={()=>{handlecheckout();handlesale(sale)}}> Proceed to checkout</div>
             </div>
     </div>):(<div></div>)
 }

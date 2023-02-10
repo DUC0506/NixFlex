@@ -63,7 +63,7 @@ function MoviesDetail(props)
                 </p>
                 <p className="releaseDate">Release date:{movie && (moment(movie.release_date).format('DD/MM/YYYY')||
                 moment(movie.first_air_date).format('DD/MM/YYYY'))}</p>
-                <p className="runtime">Runtime:</p>
+                
                 <p className="overview">{movie && movie.overview} </p>
                 <h2 className="priceMovieDetail">1.20$</h2>
                 <div className="btn-movie">

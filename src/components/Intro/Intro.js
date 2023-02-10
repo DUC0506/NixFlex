@@ -1,7 +1,7 @@
 import ReactPlayer from "react-player/vimeo";
 import{VscMute, VscUnmute} from "react-icons/vsc"
 import{MdPlaylistAdd} from "react-icons/md"
-import {BsFillCartCheckFill} from'react-icons/bs'
+import {BsPlayFill} from'react-icons/bs'
 import{AiOutlineHeart} from "react-icons/ai"
 import styled from "styled-components";
 import goblin from'../../assets/images/goblin.webp';
@@ -26,7 +26,7 @@ function Intro(props)
                 <h1 className="headingIntro"><img src={goblin} alt=''/></h1>
                 <p className="overviewIntro">Trên hành trình tìm kiếm người phá vỡ lời nguyền bất tử của mình, Yêu tinh Gong Yoo gặp gỡ Thần chết Lee Dong Wook và một nữ sinh yêu đời với quá khứ đau thương.</p>
                 <div className="btn-infoIntro">
-                    <div className="btn-addtocart"><BsFillCartCheckFill className="Cart-icon"/>Add to cart</div>
+                    <div className="btn-addtocart"><BsPlayFill className="Cart-icon"/>Play</div>
                     <div className="btn-des"><MdPlaylistAdd/></div>
                     <div className="btn-heart"><AiOutlineHeart/></div>
                 </div>
@@ -131,7 +131,7 @@ padding-top:56%;
     justify-content:center;
     line-height:24px;
     margin:0px 8px 0px 0px;
-    padding:8px 24px 8px 24px;
+    padding:8px 24px 8px 28px;
     text-align:center;
     cursor:pointer;
     .Cart-icon{
